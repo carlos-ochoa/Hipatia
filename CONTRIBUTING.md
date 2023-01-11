@@ -11,6 +11,7 @@ If you want to contribute to the project please follow the instructions:
     1. Check your code does not raise any issue in SonarCloud. A Sonar bot will scan your code and list issues if found.
     2. Your code must count with unit and integration tests if applicable. All your tests must pass, no exceptions.
     3. If the code modifies some existent functionality make the respective changes in the Wiki.
+    4. Link your PR with the issue that is solving.
 6. If your Draft PR is in compliance with the latest rules, please convert it into a Pull Request.
     1. A codeowner will check your PR, based on the next open source [guide](https://google.github.io/eng-practices/review/).
     2. If your PR is approved, it is going to be merged with main. Congratulations!  
