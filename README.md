@@ -10,3 +10,4 @@ The idea is to generate high-level implementations of the algorithms and data st
 ## How to contribute?
 
 ## Instalation
+The general instalation for the repo is going to work today.
