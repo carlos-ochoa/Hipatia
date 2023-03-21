@@ -8,23 +8,17 @@ test_cases_basic_found = [
     (11.0, [1,2,3,11.0,3,4,5], [3]),
     (11, [1,2,3,11.0,10,2,11.0,11], [3,6]),
     ("apple", [1,2,"tree","apple"], [3]),
-    ("apple", [1,2,"tree","apple","apple"], [3,4])
+    ("apple", [1,2,"tree","apple","apple"], [3,4]),
+     ({"name":"Joan"}, [TestClassMock("Carlos"), TestClassMock("Pedro"), TestClassMock("Joan")], [2]),
+    ({"name":"Joan"}, [TestClassMock("Carlos"), TestClassMock("Pedro"), TestClassMock("Joan"), TestClassMock("Joan")], [2, 3]),
+    ({"name":"Joan", "age":22}, [TestClassMock("Carlos",20), TestClassMock("Pedro",20), TestClassMock("Joan",22), TestClassMock("Joan",22)], [2,3])
 ]
 
 test_cases_basic_not_found = [
     (11, [1,2,3,10,2,5], []),
     (11.0, [1,2,3,10,2,5], []),
     (11.0, [1,2,3,11,2,5], []),
-    ("11", [1,2,3,"10","2","5"], [])
-]
-
-test_cases_object_found = [
-    ({"name":"Joan"}, [TestClassMock("Carlos"), TestClassMock("Pedro"), TestClassMock("Joan")], [2]),
-    ({"name":"Joan"}, [TestClassMock("Carlos"), TestClassMock("Pedro"), TestClassMock("Joan"), TestClassMock("Joan")], [2, 3]),
-    ({"name":"Joan", "age":22}, [TestClassMock("Carlos",20), TestClassMock("Pedro",20), TestClassMock("Joan",22), TestClassMock("Joan",22)], [2,3])
-]
-
-test_cases_object_not_found = [
+    ("11", [1,2,3,"10","2","5"], []),
     ({"name":"Joan"}, [TestClassMock("Carlos"), TestClassMock("Pedro")], []),
     ({"name":"Joan", "age":22}, [TestClassMock("Carlos",20), TestClassMock("Pedro",20)], [])
 ]
@@ -50,16 +44,6 @@ def test_basic_element_found(elem : int, l : list, result : list):
 
 @pytest.mark.parametrize("elem,l,result", test_cases_basic_not_found)
 def test_basic_element_not_found(elem : int, l : list, result : list):
-    value = ls.search(elem, l)
-    assert value == result
-
-@pytest.mark.parametrize("elem,l,result", test_cases_object_found)
-def test_object_element_found(elem : dict, l : list, result : list):
-    value = ls.search(elem, l)
-    assert value == result
-
-@pytest.mark.parametrize("elem,l,result", test_cases_object_not_found)
-def test_object_element_not_found(elem : dict, l : list, result : list):
     value = ls.search(elem, l)
     assert value == result
 
