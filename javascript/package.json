@@ -1,0 +1,27 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "js-algorithms",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vitest --run --reporter verbose --globals",
+    "coverage": "vitest run --coverage",
+    "jest-test": "jest"
+  },
+  "keywords": [
+    "linear",
+    "search",
+    "testing"
+  ],
+  "author": "Juan Tellez",
+  "license": "ISC",
+  "dependencies": {
+    "vitest": "^0.29.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
