@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     paths:
-      - 'python/**'
+      - 'python/**'  
   pull_request:
     branches:
       - main
@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x  # Selecciona la versión de Python que desees utilizar
+        python-version: 3.10
 
     - name: Install dependencies
       run: |
@@ -43,6 +43,15 @@ jobs:
       with:
         name: Test Results
         path: ./pytest-report.xml
+
+    - name: Validate commit message
+      if: ${{ github.event_name == 'push' }}
+      run: |
+        COMMIT_REGEX='^(feat|fix|docs|style|refactor|perf|test|chore|revert)(\([a-z0-9-]+\))?: [A-Z].+'
+        if ! grep -E "$COMMIT_REGEX" "$GITHUB_EVENT_PATH"; then
+          echo "Invalid commit message. Please follow the commit message convention."
+          exit 1
+        fi
 
     - name: Generate PR comment
       if: ${{ github.event_name == 'pull_request' }}
